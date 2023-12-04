@@ -10,6 +10,57 @@ public class ArrayTools {
      */
 
     /**
+     * remove target element based on value, with option: first/ all occurrences
+     * <br>
+     * returns <code>null</code> if remove is unsuccessful
+     * @param arr array to be removed from
+     * @param num target element value
+     * @param occurrences true = all / false = first
+     * @return new array
+     */
+    public static int[] remove(int[] arr, int num, boolean occurrences) {
+        // edge cases
+        if (arr == null) {
+            return null;
+        }
+
+        int count = 0;
+        for (int i : arr) {
+            if (i == num) {
+                count++;
+            }
+        }
+
+        // no element to be removed
+        if (count == 0) {
+            return null;
+        }
+
+        int[] newArr;
+        if (occurrences) {
+            newArr = new int[arr.length - count];
+            int j = 0;
+            for (int i : arr) {
+                if (i != num) {
+                    newArr[j++] = i;
+                }
+            }
+        } else {
+            newArr = new int[arr.length - 1];
+            int j = 0;
+            boolean removed = false;
+            for (int i : arr) {
+                if (i != num || removed) {
+                    newArr[j++] = i;
+                } else {
+                    removed = true;
+                }
+            }
+        }
+        return newArr;
+    }
+
+    /**
      * Remove elements of certain indices <br>
      * For elements of certain range, see the other removeElement()
      *
@@ -92,6 +143,31 @@ public class ArrayTools {
     }
 
     /**
+     * Add an element to the array iff the array doesn't have said element
+     * <br>
+     * return original array if element is already inside the array
+     * @param arr the array
+     * @param num the element
+     * @return new array
+     */
+    public static int[] addDistinctElement(int[] arr, int num) {
+        if (arr == null) {
+            return new int[]{num};
+        }
+
+        for (int i : arr) {
+            if (i == num) {
+                return arr;
+            }
+        }
+
+        int[] newArr = new int[arr.length + 1];
+        System.arraycopy(arr, 0, newArr, 0, arr.length);
+        newArr[arr.length] = num;
+        return newArr;
+    }
+
+    /**
      * int[] anArray = {0, -3, 2, 7, -7, 9, -10};
      * <ul>
      *     <li>
@@ -152,7 +228,7 @@ public class ArrayTools {
     }
 
     /**
-     *
+     * returns new array, literally only the copy of the input array
      * @param array array to be copied
      * @return a copy of the array (new array)
      */
@@ -418,6 +494,31 @@ public class ArrayTools {
 
         // copy result to array input
         System.arraycopy(result, 0, array, 0, result.length);
+    }
+
+    /**
+     * Search for the first occurrence of a value inside an array, return the index or -1 (if none)
+     * @param array array input
+     * @param value value to be searched for
+     * @return index of the value (first occurrence) or <code>-1</code> (if none)
+     */
+    public static int searchValue(Integer[] array, Integer value) {
+        for (int i = 0; i < array.length; i++) {
+            if ((array[i] == null && value == null) || (array[i] != null && array[i].equals(value))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int searchValueRecursive(Integer[] array, Integer value, int index) {
+        if (index >= array.length) {
+            return -1;
+        }
+        if ((array[index] == null && value == null) || (array[index] != null && array[index].equals(value))) {
+            return index;
+        }
+        return searchValueRecursive(array, value, index + 1);
     }
 
     /*

@@ -67,6 +67,19 @@ public class OtherTools {
         }
     }
 
+    /**
+     * Search for the Greatest Common Divisor
+     * @param num1 num1
+     * @param num2 num2
+     * @return Greatest Common Divisor
+     */
+    public static int greatestCommonDivisor(int num1, int num2) {
+        if (num2 == 0) {
+            return num1;
+        }
+        return greatestCommonDivisor(num2, num1 % num2);
+    }
+
     /*
     ====================================================================================================================
                                                      OTHERS
@@ -163,6 +176,36 @@ public class OtherTools {
         return numStr.split("");
     }
 
+    /**
+     * Checks if input is valid day, month, year
+     * @param day int
+     * @param month int
+     * @param year int
+     * @return boolean
+     */
+    public static boolean isValidDate(int day, int month, int year) {
+        return (month >= 1 && month <= 12) && (day >= 1 && day <= daysOfMonth(month, year));
+    }
+
+    public static int daysOfMonth(int month, int year) {
+        return switch(month) {
+            case 4, 6, 9, 11 -> 30;
+            case 1, 3, 5, 7, 8, 10, 12 -> 31;
+            case 2 -> daysInFebruary(year);
+            default -> -1;
+        };
+    }
+
+    public static int daysInFebruary(int year) {
+        int days;
+        if(year % 4 == 0 && (!(year % 100 == 0) || year % 400 == 0)) {
+            days = 29;
+        } else {
+            days = 28;
+        }
+        return days;
+    }
+
     /*
    ====================================================================================================================
                                                    SIMPLE NOTES
@@ -242,6 +285,7 @@ public class OtherTools {
         }
         System.out.println();
     }
+
     public static void printArray(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print("[");
@@ -257,5 +301,15 @@ public class OtherTools {
             }
         }
         System.out.println();
+    }
+
+    public double getCircleCircumference(double radius){
+        // Circumference = 2 Pi Diameter
+        return Math.PI * 2 * radius;
+    }
+
+    public double getCircleArea(double radius) {
+        // Area = Pi * Radius^2
+        return Math.PI * radius * radius;
     }
 }
