@@ -64,6 +64,36 @@ public class DoubleChainedListElement {
     }
 
     /**
+     * remove an Element at given index
+     * @param idx Index of Element to be removed
+     * @return an Element that is guaranteed to be in List (can be null if <code>List.size</code> = 1)
+     */
+    protected DoubleChainedListElement removeAt_fromElementPerspective(int idx){
+        if(idx == 0){
+            DoubleChainedListElement prevElement = this.prev;
+            DoubleChainedListElement nextElement = this.next;
+            boolean returnPrevElement = true;
+
+            if(prevElement != null){
+                prevElement.setNext(nextElement);
+            }
+            if(nextElement != null){
+                returnPrevElement = false;
+                nextElement.setPrev(prevElement);
+            }
+
+            // return an Element inside the List
+            if(returnPrevElement){
+                return prevElement;
+            }
+            else {
+                return nextElement;
+            }
+        }
+        return this.next.removeAt_fromElementPerspective(idx - 1);
+    }
+
+    /**
      * get an element with index counted from caller element (inclusive)
      * <ol>
      *     <li>{1, 2, 3, 4, 5}</li>
@@ -117,6 +147,46 @@ public class DoubleChainedListElement {
     }
 
     /**
+     * Get Next Element from current Element (recursive, caller = start element = index 0)
+     * <ul>
+     *     <li>[a, b, c, d, e]</li>
+     *     <li>index = 1 with caller = c, returns d</li>
+     * </ul>
+     * @param idx index
+     * @return target element
+     */
+    public DoubleChainedListElement getNextElementByIndex_FromElementPerspective(int idx) {
+        // return the element's next
+        if (idx == 0) {
+            return this;
+        }
+        if (next == null) {
+            throw new RuntimeException("Error: Index out of Bounds");
+        }
+        return next.getNextElementByIndex_FromElementPerspective(idx - 1);
+    }
+
+    /**
+     * Get Prev Element from current Element (recursive, caller = start element = index 0)
+     * <ul>
+     *     <li>[a, b, c, d, e]</li>
+     *     <li>index = 1 with caller = c, returns b</li>
+     * </ul>
+     * @param idx index
+     * @return target element
+     */
+    public DoubleChainedListElement getPreviousElementByIndex_FromElementPerspective(int idx) {
+        // return the element's previous
+        if (idx == 0) {
+            return this;
+        }
+        if(prev == null){
+            throw new RuntimeException("Error: Index out of Bounds");
+        }
+        return next.getPreviousElementByIndex_FromElementPerspective(idx - 1);
+    }
+
+    /**
      * normal toString method - value of current Element
      * @return value of current Element
      */
@@ -138,6 +208,104 @@ public class DoubleChainedListElement {
         } while (tmp != null);
         sb.setLength(sb.length() - 2);
         return sb.toString();
+    }
+
+    /*
+    ====================================================================================================================
+                                                Other Methods
+    ====================================================================================================================
+     */
+
+    /**
+     * remove Elements from current List that doesn't comply to rule (ascending or descending)
+     * @param increasing true/ false
+     */
+    public void removeSort(boolean increasing) {
+        if (next == null) {
+            return;
+        }
+        if (increasing && next.value < this.value || !increasing && next.value > this.value) {
+            // remove element (break chain)
+            next = next.next;
+            if (next != null) {
+                next.prev = this;
+                removeSort(increasing);
+            }
+        }
+        else {
+            next.removeSort(increasing);
+        }
+    }
+
+    /**
+     * counts the total value of elements following a set of criteria
+     * @param threshold threshold value
+     * @return long Array [<, =, >]
+     */
+    public long[] countThreshold(int threshold) {
+        long[] result = new long[3];
+        this.countThreshold(threshold, result);
+        return result;
+    }
+
+    private void countThreshold(int threshold, long[] counter) {
+        if (value < threshold) {
+            counter[0] += value;
+        } else if (value > threshold) {
+            counter[2] += value;
+        } else {
+            counter[1] += value;
+        }
+        if (next != null) {
+            next.countThreshold(threshold, counter);
+        }
+    }
+
+    /**
+     * Reverse the Element chain with new tail = caller element
+     */
+    public void reverse() {
+        this.reverseHelper(null);
+    }
+
+    private void reverseHelper(DoubleChainedListElement prev) {
+        DoubleChainedListElement tmp = this.next;
+        this.next = prev;
+        this.prev = tmp;
+        if (tmp == null) {
+            return;
+        }
+        tmp.reverseHelper(this);
+    }
+
+    /**
+     * zip 2 element chains together (l1, l2 each represents their own chain)
+     * <br>
+     * usage: l1 (part of List1), l2 (part of List2) -> combined chain (l1 = edited l1)
+     * @param l1 element 1
+     * @param l2 element 2
+     */
+    public static void zip(DoubleChainedListElement l1, DoubleChainedListElement l2) {
+        zipHelper(l1, l2, l1.next);
+    }
+
+    private static void zipHelper(DoubleChainedListElement l, DoubleChainedListElement l1, DoubleChainedListElement l2) {
+        if (l1 == null) {
+            if (l2 == null) {
+                return;
+            }
+            l.next = l2;
+            l2.prev = l;
+            return;
+        }
+        if (l2 == null) {
+            l.next = l1;
+            l1.prev = l;
+            return;
+        }
+        l.next = l1;
+        l1.prev = l;
+        zipHelper(l.next, l2, l1.next);
     }
 
     /*
