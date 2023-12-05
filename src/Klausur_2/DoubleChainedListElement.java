@@ -43,6 +43,27 @@ public class DoubleChainedListElement {
     }
 
     /**
+     * add a new Element at the specified index (calculated inclusive from caller Element)
+     * @param value new Element value
+     * @param idx target Index
+     */
+    protected void insertAt_fromElementPerspective(int value, int idx) {
+        if(idx == 0){
+            // chain up newElement
+            DoubleChainedListElement newElement = new DoubleChainedListElement(value, this.prev);
+            newElement.setNext(this);
+
+            // re-chain oldElements
+            if(this.prev != null){
+                this.prev.setNext(newElement);
+            }
+            this.setPrev(newElement);
+            return;
+        }
+        next.insertAt_fromElementPerspective(value, idx - 1);
+    }
+
+    /**
      * get an element with index counted from caller element (inclusive)
      * <ol>
      *     <li>{1, 2, 3, 4, 5}</li>
@@ -71,6 +92,52 @@ public class DoubleChainedListElement {
             return 1;
         }
         return 1 + next.calculateSize_fromElementPerspective();
+    }
+
+    /**
+     * Get the Head Element of current List (starting point for search is caller Element)
+     * @return Head Element
+     */
+    public DoubleChainedListElement getHead(){
+        if(this.prev == null){
+            return this;
+        }
+        return this.prev.getHead();
+    }
+
+    /**
+     * Get the Tail Element of current List (starting point for search is caller Element)
+     * @return Tail Element
+     */
+    public DoubleChainedListElement getTail(){
+        if(this.next == null){
+            return this;
+        }
+        return this.next.getTail();
+    }
+
+    /**
+     * normal toString method - value of current Element
+     * @return value of current Element
+     */
+    @Override
+    public String toString(){
+        return String.valueOf(this.getValue());
+    }
+
+    /**
+     * String representation of Element chain
+     * @return String representation of Element chain
+     */
+    protected String toString_Recursive() {
+        StringBuilder sb = new StringBuilder();
+        DoubleChainedListElement tmp = this;
+        do {
+            sb.append(tmp.value).append(", ");
+            tmp = tmp.next;
+        } while (tmp != null);
+        sb.setLength(sb.length() - 2);
+        return sb.toString();
     }
 
     /*

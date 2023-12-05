@@ -41,6 +41,32 @@ public class DoubleChainedList {
         } else {
             head.add_fromElementPerspective(value);
         }
+
+        // update value
+        head = head.getHead();
+        tail = head.getTail();
+        size = calculateSize_Recursive();
+    }
+
+    /**
+     * add a new Element at the specified index
+     * @param value new Element's value
+     * @param idx target index (0 to size)
+     */
+    public void insertAt_Recursive(int value, int idx) {
+        if(idx > size || idx < 0){
+            throw new RuntimeException("Error: Index out of Bounds or invalid");
+        }
+        if (head == null) {
+            add_Recursive(value);
+        }
+        else{
+            head.insertAt_fromElementPerspective(value, idx);
+        }
+
+        // update value
+        head = head.getHead();
+        tail = head.getTail();
         size = calculateSize_Recursive();
     }
 
@@ -66,6 +92,18 @@ public class DoubleChainedList {
      */
     private int calculateSize_Recursive() {
         return head == null ? 0 : head.calculateSize_fromElementPerspective();
+    }
+
+    /**
+     * String representation of current List
+     * @return String representation of current List
+     */
+    public String toString_Recursive(){
+        if (head != null) {
+            return "[" + head.toString_Recursive() + "]";
+        } else {
+            return "Empty list";
+        }
     }
 
     /*
