@@ -575,27 +575,6 @@ public class List {
     }
 
     /**
-     * example output: [] or [a] or [a, b, c, d, e]
-     * @return String representation
-     */
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[");
-        if(head != null){
-            stringBuilder.append(head.getValue());
-
-            if(head.getNext() != null){
-                for (ListElement current = head.getNext(); current != null; current = current.getNext()) {
-                    stringBuilder.append(", ");
-                    stringBuilder.append(current.getValue());
-                }
-            }
-        }
-        stringBuilder.append("]");
-        return stringBuilder.toString();
-    }
-
-    /**
      * Create new List with filtered based on range (all-inclusive, modifiable)
      * <br>
      * <b>Modifiable</b>
@@ -620,6 +599,48 @@ public class List {
         }
 
         return output;
+    }
+
+    /**
+     * example output: [] or [a] or [a, b, c, d, e]
+     * @return String representation
+     */
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        if(head != null){
+            stringBuilder.append(head.getValue());
+
+            if(head.getNext() != null){
+                for (ListElement current = head.getNext(); current != null; current = current.getNext()) {
+                    stringBuilder.append(", ");
+                    stringBuilder.append(current.getValue());
+                }
+            }
+        }
+        stringBuilder.append("]");
+        return stringBuilder.toString();
+    }
+
+    /**
+     * Create an integer Array Representation of current List
+     * @return new int[]
+     */
+    public int[] getArrayRepresentation() {
+        ListElement currentElement = this.head;
+        int listSize = this.getSize();
+        int[] result = new int[listSize];
+
+        // edge case
+        if(currentElement == null){
+            return result;
+        }
+
+        for(int i = 0; i < listSize; ++i) {
+            result[i] = currentElement.getValue();
+            currentElement = currentElement.getNext();
+        }
+        return result;
     }
 
     /*

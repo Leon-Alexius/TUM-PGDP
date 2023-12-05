@@ -3,10 +3,13 @@
 > Prince Hamlet in Act 3, Scene 1 (William Shakespeare's)
 -----------------------------
 ## Erste Klausur - 15/11/2023
-> ArrayTools <br>
-> SortTools <br>
+> [Klausur_1](src%2FKlausur_1)
 
-# TODO : Recursive version of all
+------------------------------
+## Zweite Klausur - 20/12/2023
+> List ("singly" chained List and double chained List) <br>
+> Queue - FiFo <br>
+> Stack - LiFo <br>
 
 ------------------------------
 

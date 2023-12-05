@@ -50,6 +50,32 @@ public class ListElement {
         }
     }
 
+    /**
+     * Get List Size counted from caller element (inclusive)
+     * <ul>
+     *     <li>
+     *         List ex = [0, 10, -77, 1, 11, -100, 2, 12, 3, 13, 4, 14, 5]
+     *     </li>
+     *     <li>
+     *         ex.getListElementAtIndex(0).getSize_fromElementPerspective() = 13
+     *     </li>
+     *     <li>
+     *         ex.getListElementAtIndex(12).getSize_fromElementPerspective() = 1
+     *     </li>
+     *     <li>
+     *         ex.getSize() = 13
+     *     </li>
+     * </ul>
+     * @return List Size from Element Perspective
+     */
+    public int getSize_fromElementPerspective() {
+        int result = 1;
+        for(ListElement t = next; t != null; t = t.next) {
+            result++;
+        }
+        return result;
+    }
+
     /*
     ====================================================================================================================
                                                 Setter and Getter
