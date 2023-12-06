@@ -308,6 +308,15 @@ public class DoubleChainedListElement {
         zipHelper(l.next, l2, l1.next);
     }
 
+    /**
+     * Simple method to check if an Element has same value with other Element
+     * @param other other Element
+     * @return boolean
+     */
+    public boolean isEqual(DoubleChainedListElement other) {
+        return other != null && this.value == other.value;
+    }
+
     /*
     ====================================================================================================================
                                                 Setter and Getter

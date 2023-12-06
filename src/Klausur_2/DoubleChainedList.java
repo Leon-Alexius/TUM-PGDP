@@ -27,7 +27,118 @@ public class DoubleChainedList {
 
     /*
     ====================================================================================================================
-                                                Recursive Methods
+                                              Add - Remove Methods
+    ====================================================================================================================
+     */
+
+    /**
+     * add element at end of List
+     * @param info value of new Element
+     */
+    public void add(int info) {
+        DoubleChainedListElement newElement = new DoubleChainedListElement(info);
+        if (size == 0) {
+            // if list empty set both head and tail
+            head = newElement;
+        } else {
+            // otherwise append to last element
+            tail.setNext(newElement);
+            newElement.setPrev(tail);
+        }
+        tail = newElement;
+        size++;
+    }
+
+    /**
+     * Remove element at given index (optimized)
+     * @param index target Index
+     */
+    public void removeAt(int index) {
+        if (index >= size || index < 0) {
+            throw new RuntimeException("Error: Index out of Bounds or invalid");
+        }
+        else {
+            DoubleChainedListElement toRemove = getElement(index);
+
+            // check delete head
+            if (toRemove.getPrev() != null) {
+                toRemove.getPrev().setNext(toRemove.getNext());
+            }
+            else {
+                head = toRemove.getNext();
+            }
+
+            // check if delete tail
+            if (toRemove.getNext() != null) {
+                toRemove.getNext().setPrev(toRemove.getPrev());
+            } else {
+                tail = toRemove.getPrev();
+            }
+
+            size--;
+        }
+    }
+
+    /**
+     * Chain up current List with other List
+     * @param other other List to be added to current List
+     */
+    public void addList(DoubleChainedList other) {
+        // edge case
+        if(other == null){
+            return;
+        }
+
+        // set head and chain up
+        if (size != 0) {
+            tail.setNext(other.head);
+        }
+        else {
+            head = other.head;
+        }
+
+        // if the other list is empty nothing needs to be done
+        if (other.size != 0) {
+            other.head.setPrev(tail);
+            tail = other.tail;
+            size += other.size;
+        }
+    }
+
+    /*
+    ====================================================================================================================
+                                           Get List Elements & Index
+    ====================================================================================================================
+     */
+
+    /**
+     * Get ListElement by index (optimized)
+     * @param index target index
+     * @return the internal element at the given position
+     */
+    public DoubleChainedListElement getElement(int index) {
+        if(index > size || index < 0){
+            throw new RuntimeException("Error: Index out of Bounds or invalid");
+        }
+
+        DoubleChainedListElement currentElement;
+        if (index < size / 2) {
+            currentElement = head;
+            for (int i = 0; i < index; i++){
+                currentElement = currentElement.getNext();
+            }
+        } else {
+            currentElement = tail;
+            for (int i = size - 1; i > index; i--){
+                currentElement = currentElement.getPrev();
+            }
+        }
+        return currentElement;
+    }
+
+    /*
+    ====================================================================================================================
+                                        Recursive Methods - Not Optimized
     ====================================================================================================================
      */
 
@@ -209,6 +320,50 @@ public class DoubleChainedList {
         // update l1 chain
         l1.tail = l1.head.getTail();
         l1.size = l1.calculateSize_Recursive();
+    }
+
+    /**
+     * Check if each Element in current List has same value as other Element in other List (in same order)
+     * <br>
+     * <ul>
+     *     <li>a = {1, 2, 3, 4}</li>
+     *     <li>b = {1, 2, 3, 4, 5}</li>
+     *     <li>a.isEqual(b) -> true</li>
+     * </ul>
+     * @param other other List
+     * @return true/ false
+     */
+    public boolean isEqual(DoubleChainedList other) {
+        if (other == null) {
+            return false;
+        }
+
+        DoubleChainedListElement mytemp = head;
+        DoubleChainedListElement othertemp = other.head;
+
+        while (mytemp != null) {
+            if (!mytemp.isEqual(othertemp)) {
+                return false;
+            }
+            mytemp = mytemp.getNext();
+            othertemp = othertemp.getNext();
+        }
+
+        return othertemp == null;
+    }
+
+    /**
+     * Create a copy of current List
+     * @return a new List (copy)
+     */
+    public DoubleChainedList createCopy() {
+        DoubleChainedList result = new DoubleChainedList();
+
+        for (DoubleChainedListElement currentElement = head; currentElement != null; currentElement = currentElement.getNext()) {
+            result.add(currentElement.getValue());
+        }
+
+        return result;
     }
 
     /**
