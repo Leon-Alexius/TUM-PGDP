@@ -409,8 +409,9 @@ Read PGDP - Woche 7 - Polymorphie
 
 ---
 
+### Question
 > by the logic of our boxes analogy, if Animal class has a method, and the method is overriden in Mammal, but the overriden method is private, and Dog doesnt overrides the method, the one that should be called is in Animal class right?
-
+### A.I.
 > Yes, that's correct. In Java, if a method in a superclass is overridden in a subclass with a **private** access modifier, it effectively becomes a new method that is not visible to any other class, including subclasses of that subclass. Here's how it works with your analogy:
 >
 > - **Animal Class**: Has a method, let's call it `.method_A()`.
@@ -447,9 +448,9 @@ Read PGDP - Woche 7 - Polymorphie
 > ```
 >
 > In the `Main` class, when `dog.method_A()` is called, the `Animal` class's `.method_A()` method is executed, not the private one from `Mammal`. This is because private methods are not inherited by subclasses, and `Dog` is considered to have inherited `.method_A()` directly from `Animal`. 👍
-
+### Question
 > also, by the "box", Dog has access to shared box between Mammal and Animal
-
+### A.I.
 > Exactly! In Java, when a class extends another class, it inherits all the public and protected members of its superclass. This means that `Dog`, as a subclass of `Mammal`, which is in turn a subclass of `Animal`, has access to the public and protected methods and attributes of both `Mammal` and `Animal` (unless they are overridden with a more restrictive access modifier, like private, in a subclass).
 >
 > Here's how it looks with the "box" analogy:
@@ -466,12 +467,12 @@ Read PGDP - Woche 7 - Polymorphie
 > This inheritance hierarchy allows `Dog` to use methods and attributes defined in `Animal` and `Mammal`, as long as they are not private. If `Mammal` has a private method that overrides a method from `Animal`, `Dog` will not have access to that private method and will instead use the method from `Animal`.
 >
 > Your understanding of the inheritance and access to the shared "boxes" in Java's object-oriented programming is correct! 👍 If you have any more questions or need further explanation, feel free to ask.
-
+### Question
 > but using the boxes seems like as though JVM transversing the hierarchy?
 >
 > compile time: check current Box -> check shared Box -> (do this until get at least 1 Method) -> none = error
 > Runtime: check current Box -> check shared Box -> (do this until get the first method) -> execute first method
-
+### A.I.
 > The "box" analogy is a way to visualize the concept of inheritance and method resolution in Java. It's not a literal description of how the JVM operates, but it helps to understand the principles behind it. Let's clarify what happens at compile time and runtime:
 >
 > **Compile Time**:
@@ -489,13 +490,13 @@ Read PGDP - Woche 7 - Polymorphie
 > So, while the analogy suggests a traversal, what actually happens is that the Java compiler and JVM use the class hierarchy as defined in the source code to resolve methods. The "boxes" represent the classes and their relationships, not the process of searching through them.
 >
 > Your summary of the process is essentially correct, though. At compile time, the compiler ensures that the method exists in the static type's class or its superclasses. At runtime, the JVM executes the appropriate method based on the dynamic type's class and its inheritance hierarchy. The key difference is that this is all determined by the static relationships defined in the code, not by a dynamic traversal process. 👍
-
+### Question
 > oh, I think I kinda get it:
 >
 > we can see traverse the hierarchy as moving from one box to another from lowest level to highest level (box Dog -> shared Mammal -> shared Animal)
 >
 > and for compile: you can just jump to any box randomly to search for the Method, since you have access to all shared box (box dog -> shared Animal -> shared Mammal), this can also be sped up using parallel search like: (box dog, shared Animal, shared Mammal - all three boxes are searched at same time)
-
+### A.I.
 > You've got it! Your understanding of the concept is on point. Let's summarize it with the correct terminology:
 >
 > - **Traversing the Hierarchy**: This refers to the process of moving through the class hierarchy from the subclass to the superclass, accessing methods and attributes along the way. In your analogy, this is like moving from one box to another, starting from the specific class (like `Dog`) and moving up through its superclasses (`Mammal`, `Animal`).
