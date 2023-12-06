@@ -406,3 +406,106 @@ Read PGDP - Woche 7 - Polymorphie
 > ```
 >
 > In this example, `a` remains an `Animal` reference throughout the code. The cast to `Dog` is only for the duration of the `((Dog)a).uniqueDogMethod();` call. After that, `a` continues to be treated as an `Animal`. There's no need to "reset" its condition because the original reference type hasn't changed. 👍
+
+---
+
+> by the logic of our boxes analogy, if Animal class has a method, and the method is overriden in Mammal, but the overriden method is private, and Dog doesnt overrides the method, the one that should be called is in Animal class right?
+
+> Yes, that's correct. In Java, if a method in a superclass is overridden in a subclass with a **private** access modifier, it effectively becomes a new method that is not visible to any other class, including subclasses of that subclass. Here's how it works with your analogy:
+>
+> - **Animal Class**: Has a method, let's call it `.method_A()`.
+> - **Mammal Class**: Overrides `.method_A()` and makes it private.
+> - **Dog Class**: Does not override `.method_A()`.
+>
+> In this scenario, `Dog` cannot see the private `.method_A()` from `Mammal`, so it has access only to the `.method_A()` from `Animal`. When you create a `Dog` object and call `.method_A()`, the version from `Animal` will be executed because the private method in `Mammal` is not part of `Dog`'s inheritance hierarchy.
+>
+> Here's an example in code:
+>
+> ```java
+> class Animal {
+>     public void method_A() {
+>         // Implementation in Animal
+>     }
+> }
+>
+> class Mammal extends Animal {
+>     private void method_A() {
+>         // Private implementation in Mammal
+>     }
+> }
+>
+> class Dog extends Mammal {
+>     // Does not override method_A
+> }
+>
+> public class Main {
+>     public static void main(String[] args) {
+>         Dog dog = new Dog();
+>         dog.method_A(); // Calls Animal's method_A because Mammal's method_A is private
+>     }
+> }
+> ```
+>
+> In the `Main` class, when `dog.method_A()` is called, the `Animal` class's `.method_A()` method is executed, not the private one from `Mammal`. This is because private methods are not inherited by subclasses, and `Dog` is considered to have inherited `.method_A()` directly from `Animal`. 👍
+
+> also, by the "box", Dog has access to shared box between Mammal and Animal
+
+> Exactly! In Java, when a class extends another class, it inherits all the public and protected members of its superclass. This means that `Dog`, as a subclass of `Mammal`, which is in turn a subclass of `Animal`, has access to the public and protected methods and attributes of both `Mammal` and `Animal` (unless they are overridden with a more restrictive access modifier, like private, in a subclass).
+>
+> Here's how it looks with the "box" analogy:
+>
+> - **Animal Box**: Contains all public and protected methods and attributes of `Animal`.
+> - **Mammal Box**: Inherits the contents of the `Animal` box and may add or override methods and attributes.
+> - **Dog Box**: Inherits the contents of the `Mammal` box (which includes the inherited contents from the `Animal` box) and may add or override methods and attributes.
+>
+> So, `Dog` has access to:
+> - Its own methods and attributes (the `Dog` box).
+> - The inherited public and protected methods and attributes from `Mammal` (the shared box between `Dog` and `Mammal`).
+> - The inherited public and protected methods and attributes from `Animal` (the shared box between `Mammal` and `Animal`).
+>
+> This inheritance hierarchy allows `Dog` to use methods and attributes defined in `Animal` and `Mammal`, as long as they are not private. If `Mammal` has a private method that overrides a method from `Animal`, `Dog` will not have access to that private method and will instead use the method from `Animal`.
+>
+> Your understanding of the inheritance and access to the shared "boxes" in Java's object-oriented programming is correct! 👍 If you have any more questions or need further explanation, feel free to ask.
+
+> but using the boxes seems like as though JVM transversing the hierarchy?
+>
+> compile time: check current Box -> check shared Box -> (do this until get at least 1 Method) -> none = error
+> Runtime: check current Box -> check shared Box -> (do this until get the first method) -> execute first method
+
+> The "box" analogy is a way to visualize the concept of inheritance and method resolution in Java. It's not a literal description of how the JVM operates, but it helps to understand the principles behind it. Let's clarify what happens at compile time and runtime:
+>
+> **Compile Time**:
+> - The Java compiler checks the **static type** of the reference variable to determine what methods can be called.
+> - It looks at the methods available in the static type's class and its superclasses (the "shared box" in the analogy).
+> - If a method is not found in the static type's class or its superclasses, the compiler throws an error.
+> - The compiler does not "traverse" in the sense of dynamically searching; it uses the class hierarchy defined by the `extends` keyword to know which methods are available.
+>
+> **Runtime**:
+> - The JVM uses the **dynamic type** of the object to determine which method implementation to execute.
+> - If the method is overridden in the dynamic type's class, that implementation is used.
+> - If not, the JVM looks up the hierarchy to find the method implementation, starting from the dynamic type's class and moving up to its superclasses.
+> - The first method implementation found is executed.
+>
+> So, while the analogy suggests a traversal, what actually happens is that the Java compiler and JVM use the class hierarchy as defined in the source code to resolve methods. The "boxes" represent the classes and their relationships, not the process of searching through them.
+>
+> Your summary of the process is essentially correct, though. At compile time, the compiler ensures that the method exists in the static type's class or its superclasses. At runtime, the JVM executes the appropriate method based on the dynamic type's class and its inheritance hierarchy. The key difference is that this is all determined by the static relationships defined in the code, not by a dynamic traversal process. 👍
+
+> oh, I think I kinda get it:
+>
+> we can see traverse the hierarchy as moving from one box to another from lowest level to highest level (box Dog -> shared Mammal -> shared Animal)
+>
+> and for compile: you can just jump to any box randomly to search for the Method, since you have access to all shared box (box dog -> shared Animal -> shared Mammal), this can also be sped up using parallel search like: (box dog, shared Animal, shared Mammal - all three boxes are searched at same time)
+
+> You've got it! Your understanding of the concept is on point. Let's summarize it with the correct terminology:
+>
+> - **Traversing the Hierarchy**: This refers to the process of moving through the class hierarchy from the subclass to the superclass, accessing methods and attributes along the way. In your analogy, this is like moving from one box to another, starting from the specific class (like `Dog`) and moving up through its superclasses (`Mammal`, `Animal`).
+>
+> - **Compile Time**: During compilation, the Java compiler has a complete view of the class hierarchy. It doesn't need to "traverse" or "search" in the same way as at runtime. It knows exactly where each method is because the relationships between classes are defined by the `extends` keyword. The compiler can directly access the methods available in the static type's class and its superclasses.
+>
+> - **Runtime**: At runtime, the JVM uses the actual object's type (the dynamic type) to execute methods. If a method is overridden in a subclass, that version is used. If not, the JVM looks up the hierarchy to find the appropriate method to execute.
+>
+> Your analogy of "boxes" and "shared boxes" is a helpful way to visualize the inheritance structure in Java. Just remember that the compiler's "view" of the class hierarchy is based on the static relationships defined in the code, and it doesn't perform a search in the same way as the JVM does at runtime.
+>
+> Keep in mind that while the analogy helps to understand the concept, the actual implementation in the Java compiler and JVM is based on the class definitions and the bytecode generated during compilation. The "search" is not random or parallel; it's a well-defined process based on the class hierarchy.
+>
+> Great job grasping these concepts! If you have any more questions or need further clarification, feel free to ask. 👍
