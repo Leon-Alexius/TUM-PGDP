@@ -48,7 +48,7 @@ public class Queue {
     }
 
     /**
-     * Pop (remove) an element of current Queue and return it's value
+     * Pop (remove) an element of current Queue and return its value
      * @return removed element value
      */
     public int pop() {
@@ -69,7 +69,7 @@ public class Queue {
      */
 
     /**
-     * Get an Element's index (first occurrence)
+     * Get an Element's index (first occurrence) with current "first" = index 0
      * @param value value of the Element
      * @return index or -1
      */
