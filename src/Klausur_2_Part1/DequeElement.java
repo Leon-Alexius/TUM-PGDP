@@ -1,22 +1,32 @@
-package Klausur_2;
+package Klausur_2_Part1;
 
-public class StackElement {
+public class DequeElement {
+    // same as Double Chained List
+    private DequeElement prev;
+    private DequeElement next;
     private int value;
-    private StackElement next;
 
     /*
     ====================================================================================================================
                                                   Constructor
     ====================================================================================================================
      */
-    public StackElement(int value) {
-        this.value = value;
+    DequeElement(int v) {
+        this.prev = null;
+        this.value = v;
         this.next = null;
     }
 
-    public StackElement(int value, StackElement next) {
-        this.value = value;
+    DequeElement(int v, DequeElement next) {
+        this.prev = null;
+        this.value = v;
         this.next = next;
+    }
+
+    DequeElement(DequeElement prev, int v) {
+        this.prev = prev;
+        this.value = v;
+        this.next = null;
     }
 
     /*
@@ -24,19 +34,28 @@ public class StackElement {
                                                 Setter and Getter
     ====================================================================================================================
      */
+
     public int getValue() {
         return value;
     }
 
-    public StackElement getNext() {
+    public DequeElement getNext() {
         return next;
+    }
+
+    public DequeElement getPrev() {
+        return prev;
     }
 
     public void setValue(int value) {
         this.value = value;
     }
 
-    public void setNext(StackElement next) {
+    public void setNext(DequeElement next) {
         this.next = next;
+    }
+
+    public void setPrev(DequeElement prev) {
+        this.prev = prev;
     }
 }

@@ -1,6 +1,4 @@
-package Klausur_2;
-
-import java.util.function.BiFunction;
+package Klausur_2_Part2;
 
 public class Recursion {
     /*

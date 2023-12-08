@@ -7,7 +7,8 @@
 
 ------------------------------
 ## Zweite Klausur - 20/12/2023
-> [Klausur_2](src%2FKlausur_2)
+> [Klausur_2_Part1](src%2FKlausur_2_Part1)
+> [Klausur_2_Part2](src%2FKlausur_2_Part2)
 
 ------------------------------
 

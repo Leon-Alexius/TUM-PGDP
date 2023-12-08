@@ -1,4 +1,4 @@
-package Klausur_2;
+package Klausur_2_Part1;
 
 /**
  * Deque = Stack + Queue; you can choose to remove/ add elements from back/ front

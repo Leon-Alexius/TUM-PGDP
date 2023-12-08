@@ -1,32 +1,22 @@
-package Klausur_2;
+package Klausur_2_Part1;
 
-public class DequeElement {
-    // same as Double Chained List
-    private DequeElement prev;
-    private DequeElement next;
+public class QueueElement {
     private int value;
+    private QueueElement next;
 
     /*
     ====================================================================================================================
                                                   Constructor
     ====================================================================================================================
      */
-    DequeElement(int v) {
-        this.prev = null;
-        this.value = v;
+    public QueueElement(int value) {
+        this.value = value;
         this.next = null;
     }
 
-    DequeElement(int v, DequeElement next) {
-        this.prev = null;
-        this.value = v;
+    public QueueElement(int value, QueueElement next){
+        this.value = value;
         this.next = next;
-    }
-
-    DequeElement(DequeElement prev, int v) {
-        this.prev = prev;
-        this.value = v;
-        this.next = null;
     }
 
     /*
@@ -34,28 +24,19 @@ public class DequeElement {
                                                 Setter and Getter
     ====================================================================================================================
      */
-
     public int getValue() {
         return value;
-    }
-
-    public DequeElement getNext() {
-        return next;
-    }
-
-    public DequeElement getPrev() {
-        return prev;
     }
 
     public void setValue(int value) {
         this.value = value;
     }
 
-    public void setNext(DequeElement next) {
-        this.next = next;
+    public QueueElement getNext() {
+        return next;
     }
 
-    public void setPrev(DequeElement prev) {
-        this.prev = prev;
+    public void setNext(QueueElement next) {
+        this.next = next;
     }
 }

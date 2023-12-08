@@ -1,6 +1,4 @@
-package Klausur_2;
-
-import jdk.jfr.Experimental;
+package Klausur_2_Part1;
 
 public class List {
     private ListElement head;

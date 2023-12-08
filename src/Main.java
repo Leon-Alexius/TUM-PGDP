@@ -1,5 +1,6 @@
-import Klausur_2.DoubleChainedList;
-import Klausur_2.DoubleChainedListElement;
+import Klausur_2_Part1.DoubleChainedList;
+import Klausur_2_Part1.DoubleChainedListElement;
+import Klausur_2_Part2.MemoryRing;
 
 /**
  * For testing purposes only/**
@@ -7,19 +8,14 @@ import Klausur_2.DoubleChainedListElement;
  */
 public class Main {
     public static void main(String[] args) {
-        DoubleChainedList doubleChainedList = new DoubleChainedList(); // [-7, 3, 5]
-        doubleChainedList.add_Recursive(-7);
-        doubleChainedList.add_Recursive(3);
-        doubleChainedList.add_Recursive(5);
+        MemoryRing memoryRing = new MemoryRing(4);
+        memoryRing.addElement(1234);
+        memoryRing.addElement(-4321);
+        System.out.println(memoryRing);
 
-        DoubleChainedList doubleChainedList1 = new DoubleChainedList(); // [-8, 0, 9]
-        doubleChainedList1.add_Recursive(-8);
-        doubleChainedList1.add_Recursive(0);
-        doubleChainedList1.add_Recursive(9);
-
-        DoubleChainedList.zip(doubleChainedList, doubleChainedList1); // [-7, -8, 3, 0, 5, 9]
-
-        DoubleChainedListElement a = doubleChainedList.getElementByIndex_Recursive(-1);
-        System.out.println(a);
+        memoryRing.removeElement();
+        memoryRing.removeElement();
+        memoryRing.removeElement();
+        System.out.println(memoryRing);
     }
 }

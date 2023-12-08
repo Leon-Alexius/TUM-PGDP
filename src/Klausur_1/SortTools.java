@@ -1,6 +1,6 @@
 package Klausur_1;
 
-import static Klausur_2.Recursion.findIndexOfLargest;
+import static Klausur_2_Part2.Recursion.findIndexOfLargest;
 
 public class SortTools {
     /*
