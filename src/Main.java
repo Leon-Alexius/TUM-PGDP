@@ -1,4 +1,5 @@
 import Klausur_2.DoubleChainedList;
+import Klausur_2.DoubleChainedListElement;
 
 /**
  * For testing purposes only/**
@@ -18,7 +19,7 @@ public class Main {
 
         DoubleChainedList.zip(doubleChainedList, doubleChainedList1); // [-7, -8, 3, 0, 5, 9]
 
-        doubleChainedList.removeAt_Recursive(0);
-        System.out.println(doubleChainedList.toString());
+        DoubleChainedListElement a = doubleChainedList.getElementByIndex_Recursive(-1);
+        System.out.println(a);
     }
 }

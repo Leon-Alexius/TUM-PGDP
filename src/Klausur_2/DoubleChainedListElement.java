@@ -187,12 +187,28 @@ public class DoubleChainedListElement {
     }
 
     /**
-     * normal toString method - value of current Element
-     * @return value of current Element
+     * Recursively adding the value of List Chain, starting from current Element
+     * @return total value of List Chain, starting from current Element
      */
-    @Override
-    public String toString(){
-        return String.valueOf(this.getValue());
+    public int getSum_FromElementPerspective() {
+        if(next == null) {
+            return value;
+        }
+
+        return value + next.getSum_FromElementPerspective();
+    }
+
+    /**
+     * Recursively adds the List Chain Elements to the List Parameter
+     * @param copySoFar List Chain (Copy)
+     * @return Parameter List Chain
+     */
+    public DoubleChainedList createCopy_FromElementPerspective(DoubleChainedList copySoFar) {
+        copySoFar.add(value);
+        if(next == null) {
+            return copySoFar;
+        }
+        return next.createCopy_FromElementPerspective(copySoFar);
     }
 
     /**
@@ -315,6 +331,15 @@ public class DoubleChainedListElement {
      */
     public boolean isEqual(DoubleChainedListElement other) {
         return other != null && this.value == other.value;
+    }
+
+    /**
+     * normal toString method - value of current Element
+     * @return value of current Element
+     */
+    @Override
+    public String toString(){
+        return String.valueOf(this.getValue());
     }
 
     /*

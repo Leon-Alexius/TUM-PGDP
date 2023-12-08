@@ -227,6 +227,31 @@ public class DoubleChainedList {
     }
 
     /**
+     * Get sum of all List Element Value in current List recursively
+     * @return Sum of List Value
+     */
+    public int getSum_Recursive() {
+        if(head == null) {
+            return 0;
+        }
+
+        return head.getSum_FromElementPerspective();
+    }
+
+    /**
+     * Create a copy of current List Recursively
+     * @return new DoubleChainedList (Copy)
+     */
+    public DoubleChainedList createCopy_Recursive() {
+        DoubleChainedList copy = new DoubleChainedList();
+        if(head == null) {
+            return copy;
+        }
+
+        return head.createCopy_FromElementPerspective(copy);
+    }
+
+    /**
      * String representation of current List
      * @return String representation of current List
      */
