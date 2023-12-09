@@ -1,4 +1,4 @@
-package Klausur_2_Part1;
+package Klausur_2_Part1.Stack;
 
 public class StackElement {
     private int value;

@@ -1,4 +1,4 @@
-package Klausur_2_Part1;
+package Klausur_2_Part1.SpecialString;
 
 public class SpecialStringElement {
     private char[] data;

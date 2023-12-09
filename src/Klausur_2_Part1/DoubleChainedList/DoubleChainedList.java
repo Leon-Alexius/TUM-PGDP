@@ -1,4 +1,4 @@
-package Klausur_2_Part1;
+package Klausur_2_Part1.DoubleChainedList;
 
 public class DoubleChainedList {
     private DoubleChainedListElement head;

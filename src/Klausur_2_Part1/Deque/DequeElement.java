@@ -1,4 +1,4 @@
-package Klausur_2_Part1;
+package Klausur_2_Part1.Deque;
 
 public class DequeElement {
     // same as Double Chained List

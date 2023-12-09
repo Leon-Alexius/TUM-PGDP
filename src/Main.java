@@ -1,6 +1,5 @@
-import Klausur_2_Part1.DoubleChainedList;
-import Klausur_2_Part1.DoubleChainedListElement;
 import Klausur_2_Part2.MemoryRing;
+import Klausur_2_Part2.MultiStack.MultiStack;
 
 /**
  * For testing purposes only/**
@@ -8,14 +7,22 @@ import Klausur_2_Part2.MemoryRing;
  */
 public class Main {
     public static void main(String[] args) {
-        MemoryRing memoryRing = new MemoryRing(4);
-        memoryRing.addElement(1234);
-        memoryRing.addElement(-4321);
-        System.out.println(memoryRing);
+        MultiStack multiStack = new MultiStack();
+        multiStack.push(100);
 
-        memoryRing.removeElement();
-        memoryRing.removeElement();
-        memoryRing.removeElement();
-        System.out.println(memoryRing);
+        multiStack.push(-1);
+        multiStack.push(33);
+
+        multiStack.push(999);
+        multiStack.push(1234);
+        multiStack.push(323);
+        multiStack.push(111);
+
+        multiStack.push(-9999999);
+
+        System.out.println(multiStack);
+
+        multiStack.pop();
+        System.out.println(multiStack.getTopStackValue());
     }
 }

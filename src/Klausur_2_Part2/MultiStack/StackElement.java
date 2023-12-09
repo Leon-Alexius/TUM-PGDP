@@ -1,20 +1,20 @@
-package Klausur_2_Part1;
+package Klausur_2_Part2.MultiStack;
 
-public class QueueElement {
+public class StackElement {
     private int value;
-    private QueueElement next;
+    private StackElement next;
 
     /*
     ====================================================================================================================
                                                   Constructor
     ====================================================================================================================
      */
-    public QueueElement(int value) {
+    public StackElement(int value) {
         this.value = value;
         this.next = null;
     }
 
-    public QueueElement(int value, QueueElement next){
+    public StackElement(int value, StackElement next) {
         this.value = value;
         this.next = next;
     }
@@ -28,15 +28,15 @@ public class QueueElement {
         return value;
     }
 
+    public StackElement getNext() {
+        return next;
+    }
+
     public void setValue(int value) {
         this.value = value;
     }
 
-    public QueueElement getNext() {
-        return next;
-    }
-
-    public void setNext(QueueElement next) {
+    public void setNext(StackElement next) {
         this.next = next;
     }
 }

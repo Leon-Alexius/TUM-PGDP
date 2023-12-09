@@ -1,20 +1,12 @@
-package Klausur_2_Part1;
+package Klausur_2_Part1.Queue;
 
 /**
- * Stack = LIFO Principle (Last In First Out)
- * <br>
- * We use first (top Frame) and last (bottom Frame) pointers
- * <ol>
- *     <li>{a} -> first = last = a</li>
- *     <li>push: {a} -> {b, a} -> first = b, last = a, b.next = a</li>
- *     <li>push: {b, a} -> {c, b, a} -> first = c, last = a, c.next.next = a</li>
- *     <li>pop: {c, b, a} -> {b, a} -> first = b, last = a</li>
- * </ol>
+ * Queue = FIFO Principle (First In - First Out)
  * @author DarkRosaleen
  */
-public class Stack {
-    private StackElement first;
-    private StackElement last;
+public class Queue {
+    private QueueElement first;
+    private QueueElement last;
     private int size;
 
     /*
@@ -22,7 +14,7 @@ public class Stack {
                                                Constructor and Reset
     ====================================================================================================================
      */
-    public Stack(){
+    public Queue(){
         this.first = null;
         this.last = null;
         this.size = 0;
@@ -41,23 +33,22 @@ public class Stack {
      */
 
     /**
-     * Push (add) an element to current Stack
+     * Push (add) an element to current Queue
      * @param number int value
      */
     public void push(int number) {
-        StackElement element = new StackElement(number);
+        QueueElement element = new QueueElement(number);
         if(first == null) {
             first = last = element;
-        }
-        else {
-            element.setNext(first);
-            first = element;
+        } else {
+            last.setNext(element);
+            last = element;
         }
         size++;
     }
 
     /**
-     * Pop (remove) an element of current Stack and return its value
+     * Pop (remove) an element of current Queue and return its value
      * @return removed element value
      */
     public int pop() {
@@ -78,24 +69,44 @@ public class Stack {
      */
 
     /**
-     * Represents current Stack as Integer Array
+     * Get an Element's index (first occurrence) with current "first" = index 0
+     * @param value value of the Element
+     * @return index or -1
+     */
+    public int getElementIndex(int value){
+        int index = 0;
+        QueueElement currentElement = first;
+        while(currentElement != null){
+            if(currentElement.getValue() == value){
+                return index;
+            }
+            index++;
+            currentElement = currentElement.getNext();
+        }
+
+        return -1;
+    }
+
+    /**
+     * Checks if a value exists inside current Queue
+     * @param value value to be found
+     * @return true/ false
+     */
+    public boolean isValueExist(int value){
+        return getElementIndex(value) != -1;
+    }
+
+    /**
+     * Represents current Queue as Integer Array
      * @return new int[]
      */
     public int[] toArray() {
         int[] queueAsArray = new int[size];
-        StackElement current = first;
+        QueueElement current = first;
         for(int i = 0; current != null; current = current.getNext(), i++) {
             queueAsArray[i] = current.getValue();
         }
         return queueAsArray;
-    }
-
-    /**
-     * Simple check if current Stack is empty
-     * @return true/ false
-     */
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     /*
@@ -103,27 +114,11 @@ public class Stack {
                                                 Setter and Getter
     ====================================================================================================================
      */
-    public StackElement getFirst() {
-        return first;
-    }
-
-    public StackElement getLast() {
-        return last;
-    }
-
-    public int getSize() {
+    public int size() {
         return size;
     }
 
-    public void setFirst(StackElement first) {
-        this.first = first;
-    }
-
-    public void setLast(StackElement last) {
-        this.last = last;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
+    public boolean isEmpty() {
+        return size == 0;
     }
 }
