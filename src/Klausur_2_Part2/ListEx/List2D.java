@@ -1,11 +1,13 @@
 package Klausur_2_Part2.ListEx;
 
+import java.util.Iterator;
+
 /**
  * A List with ListElement of type List
  * {1, 2, 3} -> {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
  * @param <DataType>
  */
-public class List2D<DataType> {
+public class List2D<DataType> implements Iterable<DataType> {
     private List<List<DataType>> list;
     private int size;
 
@@ -17,6 +19,11 @@ public class List2D<DataType> {
     public List2D(){
         this.list = new List<>();
         this.size = 0;
+    }
+
+    @Override
+    public Iterator<DataType> iterator() {
+        return new List2DIterator<>(list);
     }
 
     public void reset(){

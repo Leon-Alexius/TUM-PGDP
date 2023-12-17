@@ -1,7 +1,8 @@
-import Klausur_2_Part2.Tree.Order;
-import Klausur_2_Part2.Tree.Tree;
+import Klausur_2_Part2.ListEx.List;
+import Klausur_2_Part2.ListEx.List2D;
+import Klausur_2_Part2.ListEx.List2DIterator;
 
-import java.util.Random;
+import java.util.Iterator;
 
 /**
  * For testing purposes only/**
@@ -9,17 +10,21 @@ import java.util.Random;
  */
 public class Main {
     public static void main(String[] args) {
-        Tree<Integer> tree = new Tree<>(Order.IN);
-        tree.insert(15);
+        List<String> list = new List<>();
+        list.add("A");
+        list.add("B");
 
-        tree.insert(10);
-        tree.insert(20);
-        tree.insert(5);
-        tree.insert(3);
-        tree.insert(21);
-        tree.insert(17);
+        List<String> list1 = new List<>();
+        list.add("C");
+        list.add("D");
 
-        for(Integer e : tree){
+        List2D<String> list2D = new List2D<>();
+        list2D.add(new List<>());
+        list2D.add(list);
+        list2D.add(list1);
+
+
+        for(String e : list2D){
             System.out.println(e);
         }
     }
