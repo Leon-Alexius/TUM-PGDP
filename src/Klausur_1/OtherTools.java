@@ -312,4 +312,18 @@ public class OtherTools {
         // Area = Pi * Radius^2
         return Math.PI * radius * radius;
     }
+
+    /**
+     * The substring begins at index n and extends to the character at index m - 1 or to the end of the sequence if no such character exists.
+     * @param original original String
+     * @param replacement replacement String
+     * @param n start Index
+     * @param m end Index (should be +1 from actual index)
+     * @return new String
+     */
+    public static String replaceSubstring(String original, String replacement, int n, int m) {
+        StringBuilder sb = new StringBuilder(original);
+        sb.replace(n, m, replacement);
+        return sb.toString();
+    }
 }

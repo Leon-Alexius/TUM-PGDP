@@ -1,5 +1,7 @@
-import Klausur_2_Part2.MemoryRing;
-import Klausur_2_Part2.MultiStack.MultiStack;
+import Klausur_2_Part2.Tree.Order;
+import Klausur_2_Part2.Tree.Tree;
+
+import java.util.Random;
 
 /**
  * For testing purposes only/**
@@ -7,22 +9,18 @@ import Klausur_2_Part2.MultiStack.MultiStack;
  */
 public class Main {
     public static void main(String[] args) {
-        MultiStack multiStack = new MultiStack();
-        multiStack.push(100);
+        Tree<Integer> tree = new Tree<>(Order.IN);
+        tree.insert(15);
 
-        multiStack.push(-1);
-        multiStack.push(33);
+        tree.insert(10);
+        tree.insert(20);
+        tree.insert(5);
+        tree.insert(3);
+        tree.insert(21);
+        tree.insert(17);
 
-        multiStack.push(999);
-        multiStack.push(1234);
-        multiStack.push(323);
-        multiStack.push(111);
-
-        multiStack.push(-9999999);
-
-        System.out.println(multiStack);
-
-        multiStack.pop();
-        System.out.println(multiStack.getTopStackValue());
+        for(Integer e : tree){
+            System.out.println(e);
+        }
     }
 }
