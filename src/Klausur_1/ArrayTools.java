@@ -744,6 +744,46 @@ public class ArrayTools {
         }
     }
 
+    /**
+     * Swaps two Position inside a 2D Array (x1, y1) <-> (x2, y2), the Array will be upsized if needed
+     * @param array 2D Array
+     * @param oldX current coordinate X
+     * @param oldY current coordinate Y
+     * @param newX target Coordinate X
+     * @param newY target Coordinate Y
+     * @return new Array (Object Type) if upsized
+     * @param <T> inputArray dataType (any)
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T[][] superSwap(T[][] array, int oldX, int oldY, int newX, int newY) {
+        // Ensure the outer array is large enough
+        int size = Math.max(Math.max(oldX, oldY), Math.max(newX, newY)) + 1;
+        T[][] newArray;
+        if (size > array.length) {
+            newArray = (T[][]) new Object[size][size];
+            for (int i = 0; i < array.length; i++) {
+                newArray[i] = Arrays.copyOf(array[i], size);
+            }
+        } else {
+            newArray = array;
+        }
+
+        // Ensure the inner arrays are large enough
+        if (newArray[oldY].length <= oldX) {
+            newArray[oldY] = Arrays.copyOf(newArray[oldY], oldX + 1);
+        }
+        if (newArray[newY].length <= newX) {
+            newArray[newY] = Arrays.copyOf(newArray[newY], newX + 1);
+        }
+
+        // Swap the elements
+        T temp = newArray[oldY][oldX];
+        newArray[oldY][oldX] = newArray[newY][newX];
+        newArray[newY][newX] = temp;
+
+        return newArray;
+    }
+
     /*
     ====================================================================================================================
                                                    Others
