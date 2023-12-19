@@ -92,4 +92,32 @@ public class AboutLists {
         mergedList.addAll(list2);
         return mergedList;
     }
+
+    /**
+     * Converts a List of type T to type E which is the superclass of T
+     * <code>
+     * <ul>
+     *     <li>List<BlackBerry> blackBerryList = new ArrayList<>();</li>
+     *     <li>List<Berry> berryList = new ArrayList<>();</li>
+     *     <li>List<Fruit> a = convertList(blackBerryList, Fruit.class);</li>
+     *     <li>List<Fruit> b = convertList(berryList, Fruit.class);</li>
+     *     <li>a.addAll(b);  // Now 'a' contains all elements of 'blackBerryList' and 'berryList'</li>
+     * </ul>
+     * </code>
+     * @param list list of type T
+     * @param clazz ex. Fruit.class - must be a superclass of T
+     * @return new List of type E
+     * @param <T> dataType
+     * @param <E> dataType
+     */
+    @SuppressWarnings("unchecked")
+    public static <T, E> List<E> convertList(List<T> list, Class<E> clazz) {
+        List<E> newList = new ArrayList<>();
+        for (T item : list) {
+            if (clazz.isAssignableFrom(item.getClass())) {
+                newList.add((E) item);
+            }
+        }
+        return newList;
+    }
 }

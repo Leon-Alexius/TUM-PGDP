@@ -60,4 +60,23 @@ public class AboutSets {
         mergedSet.addAll(set2);
         return mergedSet;
     }
+
+    /**
+     * Converts a Set of type T to type E which is the superclass of T
+     * @param set set of type T
+     * @param clazz ex. Fruit.class - must be a superclass of T
+     * @return new Set of type E
+     * @param <T> dataType
+     * @param <E> dataType
+     */
+    @SuppressWarnings("unchecked")
+    public static <T, E> Set<E> convertSet(Set<T> set, Class<E> clazz) {
+        Set<E> newSet = new HashSet<>();
+        for (T item : set) {
+            if (clazz.isAssignableFrom(item.getClass())) {
+                newSet.add((E) item);
+            }
+        }
+        return newSet;
+    }
 }

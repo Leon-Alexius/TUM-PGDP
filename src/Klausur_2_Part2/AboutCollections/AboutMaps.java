@@ -93,4 +93,24 @@ public class AboutMaps {
         mergedMap.putAll(map2);
         return mergedMap;
     }
+
+    /**
+     * Converts a Map of type T to type E which is the superclass of T
+     * @param map map of type T
+     * @param clazz ex. Fruit.class - must be a superclass of T
+     * @return new Map of type E
+     * @param <K> key
+     * @param <T> old dataType
+     * @param <E> new dataType - must be superClass of T
+     */
+    @SuppressWarnings("unchecked")
+    public static <K, T, E> Map<K, E> convertMap(Map<K, T> map, Class<E> clazz) {
+        Map<K, E> newMap = new HashMap<>();
+        for (Map.Entry<K, T> entry : map.entrySet()) {
+            if (clazz.isAssignableFrom(entry.getValue().getClass())) {
+                newMap.put(entry.getKey(), (E) entry.getValue());
+            }
+        }
+        return newMap;
+    }
 }
