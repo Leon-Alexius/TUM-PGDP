@@ -167,6 +167,17 @@ public class OtherTools {
     }
 
     /**
+     * Check if a number can be divided into two Even Numbers
+     * @param weight whole number non-negative, bigger than 0
+     * @return boolean
+     */
+    public boolean canDivideIntoEvenParts(int weight) {
+        // An even number can always be expressed as the sum of two even numbers
+        // except for 2. No two even numbers can sum up to form an odd number.
+        return (weight > 2) && (weight % 2 == 0);
+    }
+
+    /**
      * Splitting integer input to String Array
      * @param num integer input
      * @return String Array

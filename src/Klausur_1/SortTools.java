@@ -13,7 +13,7 @@ public class SortTools {
      * Array Sort Algorithm using Bubble Sort
      * @param arr Array to be sorted
      */
-    public static void bubbleSort_Recursive(int[] arr) {
+    public static void bubbleSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n-1; i++) {
             for (int j = 0; j < n-i-1; j++) {
@@ -251,7 +251,7 @@ public class SortTools {
      */
     public static void sort2DArray_Type2(int[][] inputArray) {
         for (int[] array : inputArray) {
-            bubbleSort_Recursive(array);
+            bubbleSort(array);
         }
     }
 

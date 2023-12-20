@@ -1,6 +1,7 @@
 package Fruit_Basket;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class Basket {
     /*
@@ -32,5 +33,12 @@ public class Basket {
     @Override
     public String toString(){
         return Arrays.toString(fruits);
+    }
+
+    public static void main(String[] args) {
+        Basket basket = new Basket();
+        Fruit fruit = new Banana("sweet", 1.99, new Date());
+        basket.addFruit(fruit);
+        System.out.println(basket); // [Banana with ID: 1]
     }
 }
