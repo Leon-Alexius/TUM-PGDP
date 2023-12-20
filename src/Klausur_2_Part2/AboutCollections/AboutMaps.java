@@ -95,6 +95,37 @@ public class AboutMaps {
     }
 
     /**
+     * Combines map of (K, T) with (K, E), into map of (K, ArrayList(T)), E must extend T
+     * <code>
+     * <ul>
+     *     <li>map(Integer, Fruits) = {1 = new Banana(), 2 = new Apple()};</li>
+     *     <li>map(Integer, Berry) = {1 = new Berry(), 2 = new Berry(), 3 = new Berry()};</li>
+     *     <li>map(Integer, ArrayList(Fruits)) = (1 = {new Banana(), new Berry()}, 2 = {...}, 3 = {new Berry()}};</li>
+     * </ul>
+     * </code>
+     * @param map1 (K, T)
+     * @param map2 (K, E)
+     * @return (K, ArrayList(T))
+     * @param <K> key dataType
+     * @param <T> value dataType
+     * @param <E> value dataType, extends T
+     */
+    public static <K, T, E extends T> Map<K, ArrayList<T>> combineMaps(Map<K, T> map1, Map<K, E> map2) {
+        Map<K, ArrayList<T>> resultMap = new HashMap<>();
+
+        for (Map.Entry<K, T> entry : map1.entrySet()) {
+            resultMap.put(entry.getKey(), new ArrayList<>(Collections.singletonList(entry.getValue())));
+        }
+
+        for (Map.Entry<K, E> entry : map2.entrySet()) {
+            resultMap.computeIfAbsent(entry.getKey(), k -> new ArrayList<>()).add(entry.getValue());
+        }
+
+        return resultMap;
+    }
+
+
+    /**
      * Converts a Map of type T to type E which is the superclass of T
      * @param map map of type T
      * @param clazz ex. Fruit.class - must be a superclass of T
