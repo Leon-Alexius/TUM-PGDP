@@ -11,5 +11,8 @@
 > [Klausur_2_Part2](src%2FKlausur_2_Part2)
 
 ------------------------------
+## Dritte Klausur - 31/01/2024
+> [Klausur_3](src%2FKlausur_3)
 
+------------------------------
 © Lie Leon Alexius

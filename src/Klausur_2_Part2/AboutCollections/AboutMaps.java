@@ -124,7 +124,6 @@ public class AboutMaps {
         return resultMap;
     }
 
-
     /**
      * Converts a Map of type T to type E which is the superclass of T
      * @param map map of type T

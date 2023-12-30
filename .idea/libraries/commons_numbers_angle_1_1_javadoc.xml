@@ -1,0 +1,43 @@
+<component name="libraryTable">
+  <library name="commons-numbers-angle-1.1-javadoc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-angle-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-arrays-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-combinatorics-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-complex-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-field-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-fraction-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-gamma-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-primes-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-quaternion-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-rootfinder-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-angle-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-arrays-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-combinatorics-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-complex-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-core-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-field-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-fraction-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-gamma-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-primes-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-quaternion-1.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-rootfinder-1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-angle-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-arrays-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-combinatorics-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-complex-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-core-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-field-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-fraction-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-gamma-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-primes-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-quaternion-1.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/commons-numbers-1.1/commons-numbers-rootfinder-1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
