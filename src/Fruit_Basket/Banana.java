@@ -3,15 +3,26 @@ package Fruit_Basket;
 import java.util.Date;
 
 public class Banana extends Fruit implements Fruit_Interface {
-    private String taste;
+    private final Taste taste;
     private double price;
     private static int id = 0;
-    private int bananaId;
+    private final int bananaId; // final attributes can't be changed after a value is assigned to them
 
-    public Banana(String taste, double price, Date expiryDate) {
+    public Banana(Taste taste, double price, Date expiryDate) {
+        super(expiryDate); // super() call must be first
         this.taste = taste;
         this.price = price;
         this.bananaId = ++id;
+    }
+
+    // Example usage of Enumerator Method
+    public String isSweet(){
+        if(taste.isSweet()){
+            return "This Banana with ID: " + this.bananaId + " is Sweet";
+        }
+        else {
+            return "This Banana with ID: " + this.bananaId + " is Not Sweet";
+        }
     }
 
     @Override
@@ -20,7 +31,7 @@ public class Banana extends Fruit implements Fruit_Interface {
     }
 
     @Override
-    public String getTaste() {
+    public Taste getTaste() {
         return this.taste;
     }
 

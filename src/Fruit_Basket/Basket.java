@@ -3,18 +3,9 @@ package Fruit_Basket;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Random;
 
 public class Basket implements Iterable<Fruit> {
-    /*
-    Example usage:
-
-    Basket basket = new Basket();
-    Date date = new Date();
-    Fruit aFruit = new Banana("sweet", 100, date);
-    basket.addFruit(aFruit);
-
-    System.out.println(basket); // [Banana with ID: 1]
-     */
     private Fruit[] fruits;
     private int fruitsCount;
 
@@ -56,25 +47,26 @@ public class Basket implements Iterable<Fruit> {
 
     public static void main(String[] args) {
         Basket basket = new Basket();
+        Random random = new Random();
 
-        for(int i = 0; i < 5; i++){
-            basket.addFruit(new Banana("sweet", 1.99, new Date()));
+        // Generate random Bananas
+        for(int i = 0; i < 10; i++){
+            if(random.nextInt(0, 100) <= 50){
+                basket.addFruit(new Banana(Taste.SWEET, 1.99, new Date()));
+            }
+            else {
+                basket.addFruit(new Banana(Taste.SOUR, 0.99, new Date()));
+            }
         }
 
-        /*
-        [Banana with ID: 1, Banana with ID: 2, Banana with ID: 3, Banana with ID: 4, Banana with ID: 5]
-         */
+        // see inside of Basket
         System.out.println(basket);
 
-        /*
-        Banana with ID: 1
-        Banana with ID: 2
-        Banana with ID: 3
-        Banana with ID: 4
-        Banana with ID: 5
-         */
+        // check if a fruit is a Banana, if yes, then get if it is sweet or not
         for(Fruit fruit : basket){
-            System.out.println(fruit);
+            if(fruit instanceof Banana){
+                System.out.println(((Banana) fruit).isSweet());
+            }
         }
     }
 }
