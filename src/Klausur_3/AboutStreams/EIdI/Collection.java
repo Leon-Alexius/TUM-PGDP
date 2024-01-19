@@ -2,7 +2,7 @@ package Klausur_3.AboutStreams.EIdI;
 
 import java.util.Iterator;
 
-public interface Collection<T> {
+interface Collection<T> {
     Iterator<T> iterator();
 
     default Stream<T> stream() {

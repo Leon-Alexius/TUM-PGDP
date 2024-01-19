@@ -2,7 +2,7 @@ package Klausur_3.AboutStreams.EIdI;
 
 import java.util.function.Predicate;
 
-public interface Stream<T> {
+interface Stream<T> {
     Pair<T> eval();
 
     class Pair<T> {

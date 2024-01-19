@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Test {
+public class BasicExample {
     public static void main(String[] args) throws IOException {
         int port = 8080;
         ServerSocket serverSocket = new ServerSocket(port);
@@ -22,7 +22,7 @@ public class Test {
             PrintWriter wr = new PrintWriter(new OutputStreamWriter(client.getOutputStream()));
             wr.println("Hallo Pinguine!");
             wr.flush();
-            wr.close();
+            wr.close(); // close the Writer (Socket closed)
         }
 
         // Alles schließen

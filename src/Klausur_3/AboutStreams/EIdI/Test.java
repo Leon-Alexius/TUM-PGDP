@@ -2,7 +2,7 @@ package Klausur_3.AboutStreams.EIdI;
 
 import java.util.function.Predicate;
 
-public class Test {
+class Test {
     public static void main(String[] args) {
         Stream<Integer> stream = Stream.of(new Integer[]{1,2,3,4});
 

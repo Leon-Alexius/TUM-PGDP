@@ -1,6 +1,6 @@
 package DiscreteStructure;
 
-public class Test {
+public class MatrixCalculatorRunner {
     public static void main(String[] args) {
         // a stochastic matrix (don't care about eigenvalue)
         double[][] matrixA = {

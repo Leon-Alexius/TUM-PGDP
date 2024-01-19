@@ -1,4 +1,4 @@
-package Klausur_3.AboutStreams;
+package Klausur_3.AboutStreams.EIdI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-public class Examples {
+class Examples {
     private static boolean isPrime(int number) {
         IntPredicate isDivisible = value -> number % value == 0;
 
