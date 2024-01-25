@@ -15,6 +15,8 @@
 ## Dritte Klausur - 31/01/2024
 > [Klausur_3](src%2FKlausur_3)
 
+<code>Socket</code> is not Klausur relevant
+
 ------------------------------
 ## Extras
 > [Fruit_Basket](src%2FFruit_Basket)
