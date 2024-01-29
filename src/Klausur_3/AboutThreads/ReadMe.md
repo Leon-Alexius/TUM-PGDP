@@ -25,7 +25,3 @@
         </ul>
     <li> Semaphore </li>
 </ol>
-
-## Task List
-1. Producer-Consumer Problem
-2. Semaphore
