@@ -20,15 +20,9 @@ import java.util.concurrent.*;
  */
 public class AboutExecutorService {
     /**
-     * A Thread Class that generates random Integer
-     */
-    private static class ThreadUsingRunnable implements Runnable {
-        private final int id;
-
-        public ThreadUsingRunnable(int id) {
-            this.id = id;
-        }
-
+         * A Thread Class that generates random Integer
+         */
+    private record ThreadUsingRunnable(int id) implements Runnable {
         @Override
         public void run() {
             Random rand = new Random();
@@ -59,6 +53,40 @@ public class AboutExecutorService {
                 executorService.submit(new ThreadUsingRunnable(i)); // submit i-th new Thread
             }
             // executorService.shutdown(); // redundant when using try-with
+        }
+    }
+
+    /**
+     * An example of waiting for all Threads in a pool (ExecutorService) to finish.
+     * <br>
+     * We can handle the case where not all Threads finished executing using simple <code>if-else</code>
+     */
+    private static void safeExecutor(){
+        try(ExecutorService executorService = Executors.newFixedThreadPool(5)){
+            for(int i = 0; i < 5; i++){
+                executorService.submit(new ThreadUsingRunnable(i));
+            }
+
+            // Initiates an orderly shutdown, previously submitted tasks are executed, but no new tasks will be accepted.
+            executorService.shutdown();
+
+            // wait for all tasks to finish
+            // true if this executor terminated and false if the timeout elapsed before termination
+            boolean flag;
+            try {
+                flag = executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            // handle here
+            if(flag){
+                System.out.println("Process finished completely");
+            }
+            else{
+                System.out.println("The Process doesn't finish completely");
+            }
         }
     }
 

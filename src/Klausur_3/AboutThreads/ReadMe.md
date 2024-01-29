@@ -18,7 +18,7 @@
 <ol>
     <li> Zustand (join, sleep, etc.) </li>
     <li> Locks (Monitor) </li>
-    <li> Semaphore </li>
     <li> Producer-Consumer Problem</li>
+    <li> Semaphore </li>
 </ol>
 
