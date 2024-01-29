@@ -1,12 +1,11 @@
 ## Thread Pt.1
-
 <ol>
     <li> 
         BasicThread
         <ul>
-            <li>extends Thread = run()</li>
-            <li>implements Runnable = run()</li>
-            <li>implements Callable = call()</li>
+            <li><code>extends Thread</code> = <code>run()</code></li>
+            <li><code>implements Runnable</code> = <code>run()</code></li>
+            <li><code>implements Callable</code> = <code>call()</code></li>
         </ul>
     </li>
     <li> ExecutorService </li>
@@ -19,6 +18,14 @@
     <li> Zustand (join, sleep, etc.) </li>
     <li> Locks (Monitor) </li>
     <li> Producer-Consumer Problem</li>
+        <ul>
+            <li><code>wait()</code></li>
+            <li><code>notify()</code></li>
+            <li><code>notifyAll()</code></li>
+        </ul>
     <li> Semaphore </li>
 </ol>
 
+## Task List
+1. Producer-Consumer Problem
+2. Semaphore

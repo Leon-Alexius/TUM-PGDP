@@ -14,7 +14,7 @@ import java.util.Objects;
  * </ul>
  * https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html
  */
-public class States extends Thread {
+public class AboutThreadStates extends Thread {
     private static Thread t1;
     private static Thread t2;
     public void run() {
@@ -51,8 +51,8 @@ public class States extends Thread {
      */
     public static void main(String[] args) throws InterruptedException {
         // 2 Thread object
-        States states = new States();
-        States states1 = new States();
+        AboutThreadStates states = new AboutThreadStates();
+        AboutThreadStates states1 = new AboutThreadStates();
 
         // t1 -> states; t2 -> states1
         t1 = states;
