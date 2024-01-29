@@ -8,6 +8,10 @@ public class BasicThread {
      * We can mark a Class as Thread-able using "extends Thread"
      * <br>
      * However, this Class can't inherit any other Parent Class
+     * <br> <br>
+     * <strong>Important!</strong> <br>
+     * <code>ThreadUsingThread thread = new ThreadUsingThread();</code> <br>
+     * <code>thread.start();</code>
      * <br>
      * https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html
      */
@@ -28,6 +32,11 @@ public class BasicThread {
      * Alternatively, we can mark a Class as Thread-able using "implements Runnable"
      * <br>
      * With this, the Class can still inherit a parent Class
+     * <br> <br>
+     * <strong>Important!</strong> <br>
+     * <code>Thread thread = new Thread(new ThreadUsingRunnable());</code>
+     * <br>
+     * <code>thread.start();</code>
      * <br>
      * https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html
      */
