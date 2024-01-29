@@ -14,6 +14,8 @@ import java.util.concurrent.Executors;
  * <br> <br>
  * In the context of the Producer-Consumer problem, we need two counting semaphores – Full and Empty. <br>
  * Full keeps track of the number of items in the buffer at any given time, and Empty keeps track of the number of unoccupied slots1.
+ * <br> <br>
+ * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Semaphore.html#acquire--
  */
 public class AboutSemaphore {
     /**
