@@ -1,4 +1,4 @@
-package Klausur_3.AboutThreads;
+package Klausur_3.AboutThreads.EidI;
 
 /**
  * The <code>produce()</code> and <code>consume()</code> methods are both synchronized, which means only one can be executing at a time.

@@ -1,7 +1,10 @@
-package Klausur_3.AboutThreads;
+package Klausur_3.AboutThreads.EidI;
 
 import java.util.concurrent.Callable;
 
+/**
+ * A simple implementation of Future (for educational purpose!)
+ */
 public class Future<T> implements Runnable {
     private T value = null;
     private Exception exc = null;

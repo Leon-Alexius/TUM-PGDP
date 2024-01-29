@@ -1,4 +1,4 @@
-package Klausur_3.AboutThreads;
+package Klausur_3.AboutThreads.EidI;
 
 public class MultiThreading {
     public static class Counter {

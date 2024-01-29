@@ -1,4 +1,4 @@
-package Klausur_3.AboutThreads;
+package Klausur_3.AboutThreads.EidI;
 
 public class Examples {
     public static class MyThread extends Thread {
