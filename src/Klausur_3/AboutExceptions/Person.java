@@ -32,6 +32,15 @@ public class Person {
         }
 
         // suppose there is another exception that is not inherited like (Moldy -> Expired)
-        // catch (anotherException | Expired exception) {}
+        /*
+        you can catch multiple exceptions in a single catch block using the pipe (|) character,
+        but you should define only one exception variable.
+
+        try {
+            // some code
+        } catch (AnotherException | Expired e) {
+            // handle exception
+        }
+         */
     }
 }
