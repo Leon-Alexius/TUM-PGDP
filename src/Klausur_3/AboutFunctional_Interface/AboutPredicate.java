@@ -40,7 +40,19 @@ public class AboutPredicate {
         return isEqual.test(obj2);
     }
 
-    // tests
+    /**
+     * in Java, a Predicate is a functional interface that <b>takes only one argument</b> and returns a boolean.
+     * <br><br>
+     * If you want to use a lambda function with three parameters, you can define your own functional interface.
+     */
+    @FunctionalInterface
+    interface ThreeParameterPredicate<X, Y, Z> {
+        boolean test(X x, Y y, Z z);
+    }
+
+    /**
+     * Test
+     */
     public static void main(String[] args) {
         Predicate<Integer> isEven = x -> x % 2 == 0;
         Predicate<Integer> greaterThanFive = (x) -> x > 5;
@@ -55,5 +67,10 @@ public class AboutPredicate {
 
         // but you can actually just do this (direct use of ||)
         Predicate<Integer> isMultipleOf2Or7 = num -> num % 2 == 0 || num % 7 == 0;
+
+        // Three Parameter Predicate (W09H01 - Warmup)
+        ThreeParameterPredicate<Double, Double, Double> predicate = (x, y, z) -> (z != 0) &&
+                ((z > 0 && x < y) || (z < 0 && x > y));
+        System.out.println(predicate.test(4.0, 2.0, 1.0));
     }
 }

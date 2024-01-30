@@ -3,7 +3,9 @@ package Klausur_3.AboutStreams;
 import java.util.Random;
 import java.util.stream.Stream;
 
-// Parallel Stream makes it faster, but its order is not guaranteed
+/**
+ * Parallel Stream makes it faster, but its order is not guaranteed
+ */
 public class StreamParallel {
     // https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
 
@@ -29,7 +31,9 @@ public class StreamParallel {
                 .sum();
     }
 
-    // test here
+    /**
+     * Test Here
+     */
     public static void main(String[] args) {
         System.out.println(calculateWeirdTotalAge(humanInvasion(), 1000));
     }

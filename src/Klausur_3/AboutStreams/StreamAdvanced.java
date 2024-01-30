@@ -12,7 +12,9 @@ public class StreamAdvanced<T> {
     ====================================================================================================================
      */
 
-    // Optional is a container for an Object
+    /**
+     * Optional is a container for an Object
+     */
     private static class OptionalExamples{
         // https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html
         // https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
@@ -81,7 +83,9 @@ public class StreamAdvanced<T> {
     ====================================================================================================================
      */
 
-    // IntStream is a special Stream made to handle Integer. For example, it has .sum() method
+    /**
+     * IntStream is a special Stream made to handle Integer. For example, it has .sum() method
+     */
     private static class IntegerStreamExample{
         // https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
         // https://docs.oracle.com/javase/8/docs/api/java/util/IntSummaryStatistics.html
