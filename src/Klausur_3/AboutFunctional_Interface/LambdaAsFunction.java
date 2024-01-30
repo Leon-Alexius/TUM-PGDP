@@ -17,6 +17,9 @@ public class LambdaAsFunction{
             return x * x;
         };
 
+        // Shorthand version:
+        Function<Integer, Integer> twiceSquare = x -> 2*x*x;
+
         // run
         System.out.println("The Twice Square of " + integer + " is " + TwiceSquare.apply(integer));
     }
@@ -44,8 +47,13 @@ public class LambdaAsFunction{
 
         // (x*3)^3
         System.out.println("(x*3)^3 is: " + powerOfThree.compose(triple).apply(integer));
+        // (x*3)^3
+        System.out.println("(x*3)^3 is: " + triple.andThen(powerOfThree).apply(integer));
+
         // sqrt((x*3)^3)
         System.out.println("sqrt((x*3)^3) is: " + squareRoot.compose(powerOfThree.compose(triple)).apply(integer));
+        // sqrt((x*3)^3)
+        System.out.println("sqrt((x*3)^3) is: " + triple.andThen(powerOfThree).andThen(squareRoot).apply(integer));
     }
 
     // test
