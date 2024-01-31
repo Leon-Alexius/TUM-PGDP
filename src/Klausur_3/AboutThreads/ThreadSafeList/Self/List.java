@@ -1,14 +1,13 @@
 package Klausur_3.AboutThreads.ThreadSafeList.Self;
 
 import java.util.Iterator;
-import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class List<T> implements Iterable<T> {
     private ListElement<T> head;
     private ListElement<T> tail;
     private int size;
-    private final ReadWriteLock lock; // using ReentrantReadWriteLock
+    private final ReentrantReadWriteLock lock; // using ReentrantReadWriteLock
 
     /*
     ====================================================================================================================
@@ -49,11 +48,11 @@ public class List<T> implements Iterable<T> {
         lock.writeLock().lock();
         try{
             if (head == null) {
-                head = new ListElement<>(value);
+                head = new ListElement<>(value, lock);
                 tail = head;
             }
             else {
-                tail.setNext(new ListElement<>(value));
+                tail.setNext(new ListElement<>(value, lock));
                 tail = tail.getNext();
             }
             size++;

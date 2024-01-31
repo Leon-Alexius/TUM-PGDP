@@ -26,9 +26,18 @@
     <li> Semaphore </li>
 </ol>
 
+---
+
 ## Important!
 > <b>ExecutorService is AutoCloseable in Java 19+</b>
 > 
 > Starting from Java 19, ExecutorService implements AutoCloseable. 
 > 
 > The default implementation invokes `shutdown()` and waits for tasks to complete with `awaitTermination()` in a loop. It calls `shutdownNow()` if interrupted.
+
+---
+
+## `wait()` and `notify()`
+> The `notify()` and `wait()` methods in Java are part of the object’s monitor, which means they need to be called from a `synchronized` context. 
+> <br>
+> You can’t call `object.notify()` outside a synchronized block that locks on the `object`.

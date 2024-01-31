@@ -1,4 +1,4 @@
-package Klausur_3.AboutThreads;
+package Klausur_3.AboutThreads.ThreadSafe;
 
 import java.util.concurrent.Semaphore;
 import java.util.Random;
