@@ -15,6 +15,6 @@ public class Euros {
     }
 
     public static void main(String[] args) {
-        System.out.println(p(9, 5));
+        System.out.println(p(6, 3));
     }
 }
