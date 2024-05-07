@@ -1,5 +1,8 @@
 package Klausur_2_Part1.List;
 
+import java.util.Optional;
+import java.util.function.Predicate;
+
 public class List {
     private ListElement head;
     private ListElement tail;
@@ -223,6 +226,32 @@ public class List {
             // even if index = -1, removeAt(-1) will just also simply return -1
             index = getListElementIndexByValue(value);
             removeAt(index);
+        }
+    }
+
+    /**
+     * Remove duplicates from the List, Memory Usage O(1)
+     */
+    public void removeDuplicates() {
+        // anchor
+        ListElement current = head;
+
+        while (current != null) {
+            ListElement temp = current;
+
+            // loop check to find any same value
+            while (temp.getNext() != null) {
+                // case same, set Next to Next.Next
+                if (temp.getNext().getValue() == current.getValue()) {
+                    temp.setNext(temp.getNext().getNext());
+                }
+                else {
+                    temp = temp.getNext();
+                }
+            }
+
+            // move to the next Node
+            current = current.getNext();
         }
     }
 
@@ -597,6 +626,38 @@ public class List {
         }
 
         return output;
+    }
+
+    /**
+     * Move the first element that fulfills Predicate to the 1st of the List
+     * <br>
+     * ex. <code>n -> n > 10</code>
+     * @param p Predicate
+     * @return Optional with the element value or empty
+     */
+    public Optional<Integer> findFirst(Predicate<Integer> p) {
+        ListElement prev = null;
+        ListElement current = head;
+
+        while (current != null) {
+
+            // case true, move the node to the top of the list
+            if (p.test(current.getValue())) {
+                if (prev != null) {
+                    // simply re-chain prev to current.Next and set current.Next to head, then set current as head
+                    prev.setNext(current.getNext());
+                    current.setNext(head);
+                    head = current;
+                }
+                return Optional.of(current.getValue());
+            }
+
+            // check for next Element
+            prev = current;
+            current = current.getNext();
+        }
+
+        return Optional.empty();
     }
 
     /**
