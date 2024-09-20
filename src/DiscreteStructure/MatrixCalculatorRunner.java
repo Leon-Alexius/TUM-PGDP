@@ -32,7 +32,21 @@ public class MatrixCalculatorRunner {
                 {0,2}
         };
 
-        MatrixCalculator matrixCalculator = getMatrixCalculator(matrixC, 9999999);
+        // test your own here
+        double[][] customMatrix = {
+                {0, 0.5, 0.5, 0, 0},
+                {1, 0, 0, 0, 0},
+                {0, (double) 1 /3, 0, (double) 1 /3, (double) 1 /3},
+                {0, 0, 0, 0, 1},
+                {0, 0.5, 0.5, 0, 0}
+        };
+
+        double[][] leon = {
+                {0.8,0.2},
+                {0.5,0.5}
+        };
+
+        MatrixCalculator matrixCalculator = getMatrixCalculator(leon, 999999); // best: 999999
         System.out.println(matrixCalculator.formattedOutput(matrixCalculator.calculateAverageSum()));
     }
 

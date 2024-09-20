@@ -37,6 +37,22 @@ public class OtherTools {
     }
 
     /**
+     * Another version of positiveModulo (faster)
+     * @param a int
+     * @param b int
+     * @return a % b
+     */
+    public static int positiveModulo2(int a, int b){
+        int mod = a % b;
+
+        // if the signs are different and modulo not zero, adjust result
+        if ((mod ^ b) < 0 && mod != 0) {
+            mod += b;
+        }
+        return mod;
+    }
+
+    /**
      * This is implementation of Math.ceil()
      * <ul>
      *     <li>round to the nearest integer -> Math.round()</li>
